@@ -2,7 +2,7 @@
   "name": "med_project1",
   "version": "1.0.0",
   "description": "",
-  "main": "connection.js",
+  "main": "server/index.js",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",

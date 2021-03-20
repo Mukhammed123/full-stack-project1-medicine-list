@@ -20,7 +20,14 @@
         </tr>
         <tr v-for="(item, index) in allItemsSheetOne" :key="index" class="sheet-one">
           <td> {{index+1}}. </td>
-          <td v-for="(info, index2) in item" :key="index2">{{ info ? (index2==='_id' ? '複方' : info) : 'none'}}</td>
+          <td>複方</td>
+          <td>{{item.number}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.hicode}}</td>
+          <td>{{item.classFirstStroke}}</td>
+          <td>{{item.remark}}</td>
+          <td>{{item.composition}}</td>
         </tr>
       </table>
 
@@ -38,7 +45,14 @@
         </tr>
         <tr v-for="(item, index) in allItemsSheetTwo" :key="index*100" class="sheet-two">
           <td> {{index+1}}. </td>
-          <td v-for="(info, index2) in item" :key="index2">{{ index2==='_id' ? '單方' : info}}</td>
+          <td>單方</td>
+          <td>{{item.number}}</td>
+          <td>{{item.name}}</td>
+          <td>{{item.price}}</td>
+          <td>{{item.hicode}}</td>
+          <td>{{item.classFirstStroke}}</td>
+          <td>{{item.remark}}</td>
+          <td>{{item.composition}}</td>
         </tr>
       </table>
     </div>
@@ -89,10 +103,16 @@ export default {
     white-space: nowrap;
     overflow: scroll;
   }
+  table {
+    min-width: 1200px;
+    overflow: scroll;
+  }
   table tr td {
+    overflow: scroll;
+    width: 90px;
+    text-overflow: ellipsis;
     text-align: center;
     display: inline-block;
-    width: 100px;
     margin: 20px;
   }
 </style>

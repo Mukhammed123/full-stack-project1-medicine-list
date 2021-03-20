@@ -13,6 +13,6 @@ const sheetSchema = new Schema({
 });
 
 // Create Model
-const sheetOne = mongoose.model('sheet-one', sheetSchema);
+const sheetOne = mongoose.model('sheet-one-item', sheetSchema);
 
 module.exports = sheetOne;

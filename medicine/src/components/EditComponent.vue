@@ -81,26 +81,28 @@ export default {
         ...mapActions(['insertItemOne', 'insertItemTwo']),
         update() {
             var data = {
+                id: '',
                 number: this.number,
-                name: this.name,
-                price: this.price,
-                hicode: this.hicode,
-                classFirstStroke: this.firstStrokeClass,
-                remark: this.remark,
-                composition: this.composition,
+                name: (this.name ? this.name  : ''),
+                price: (this.price ? this.price : ''),
+                hicode: (this.hicode ? this.hicode : ''),
+                classFirstStroke: (this.firstStrokeClass ? this.firstStrokeClass : ''),
+                remark: (this.remark ? this.remark : ''),
+                composition: (this.composition ? this.composition : ''),
             }
             if(this.type === '複方') {
                 if(this.number){
-                    var id = '', flag = false;
+                    var flag = false;
                     for(var i=0; i<this.allItemsSheetOne.length; i++) {
                         if(this.number == this.allItemsSheetOne[i].number){
-                            id = this.allItemsSheetOne[i]._id;
+                            console.log(this.allItemsSheetOne[i]._id);
+                            data.id = this.allItemsSheetOne[i]._id;
                             flag = true;
                             break;
                         }
                     }
                     if(flag)
-                        PostService.updateItem(id, data).then(() => {
+                        PostService.updateItem(data).then(() => {
                             this.clear();
                         });
                     else alert('The number does not exist');
@@ -108,16 +110,17 @@ export default {
                 else alert('Enter Number of the Item');
 
             } else if(this.type === '單方') {
-                var id2 = '', flag2 = false;
+                var flag2 = false;
                 for(var j=0; j<this.allItemsSheetTwo.length; j++) {
                     if(this.number === this.allItemsSheetTwo[j].number){
-                        id2 = this.allItemsSheetTwo[j]._id;
+                        console.log(this.allItemsSheetTwo[j]._id);
+                        data.id = this.allItemsSheetTwo[j]._id;
                         flag2 = true;
                         break;
                     }
                 }
                 if(flag2)
-                    PostService.updateItem2(id2, data).then(() => {
+                    PostService.updateItem2(data).then(() => {
                         this.clear();
                     });
                 else alert('The number does not exist');
@@ -135,13 +138,13 @@ export default {
                         }
                     }
                     if(flag) {
-                        this.number = this.allItemsSheetOne[index].number
-                        this.name = this.allItemsSheetOne[index].name
-                        this.price = this.allItemsSheetOne[index].price
-                        this.hicode = this.allItemsSheetOne[index].hicode
-                        this.firstStrokeClass = this.allItemsSheetOne[index].firstStrokeClass
-                        this.remark = this.allItemsSheetOne[index].remark
-                        this.composition = this.allItemsSheetOne[index].composition
+                        this.number = this.allItemsSheetOne[index].number;
+                        this.name = this.allItemsSheetOne[index].name;
+                        this.price = this.allItemsSheetOne[index].price;
+                        this.hicode = this.allItemsSheetOne[index].hicode;
+                        this.firstStrokeClass = this.allItemsSheetOne[index].classFirstStroke;
+                        this.remark = this.allItemsSheetOne[index].remark;
+                        this.composition = this.allItemsSheetOne[index].composition;
                     }
                     else alert('The number does not exist');
                 }
@@ -151,9 +154,11 @@ export default {
                 var index2 = 0, flag2 = false;
                 
                 for(var j=0; j<this.allItemsSheetTwo.length; j++) {
+                    console.log(this.number, this.allItemsSheetTwo[j].number)
                     if(this.number === this.allItemsSheetTwo[j].number){
                         index2 = j;
                         flag2 = true;
+                        console.log(this.allItemsSheetTwo[j])
                         break;
                     }
                 }
@@ -162,7 +167,7 @@ export default {
                     this.name = this.allItemsSheetTwo[index2].name
                     this.price = this.allItemsSheetTwo[index2].price
                     this.hicode = this.allItemsSheetTwo[index2].hicode
-                    this.firstStrokeClass = this.allItemsSheetTwo[index2].firstStrokeClass
+                    this.firstStrokeClass = this.allItemsSheetTwo[index2].classFirstStroke
                     this.remark = this.allItemsSheetTwo[index2].remark
                     this.composition = this.allItemsSheetTwo[index2].composition
                 }
@@ -214,14 +219,14 @@ export default {
             } else if(this.type === '單方') {
                 var id2 = '', flag2 = false;
                 for(var j=0; j<this.allItemsSheetTwo.length; j++) {
-                    if(this.number === this.allItemsSheetTwo[j]){
+                    if(this.number === this.allItemsSheetTwo[j].number){
                         id2 = this.allItemsSheetTwo[j]._id;
                         flag2 = true;
                         break;
                     }
                 }
                 if(flag2)
-                    PostService.deleteItem(id2).then(() => {
+                    PostService.deleteItem2(id2).then(() => {
                         this.clear();
                     });
                 else alert('The number does not exist');

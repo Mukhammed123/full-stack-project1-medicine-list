@@ -9,8 +9,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const posts = require('./routes/api/posts');
+const posts2 = require('./routes/api/posts2');
 const { ppid } = require('process');
 
+app.use('/api/posts/second-sheet', posts2);
 app.use('/api/posts', posts);
 
 // Handle production

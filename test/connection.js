@@ -1,10 +1,7 @@
 const mongoose = require('mongoose');
 
-// Connect to mongodb
-mongoose.connect('mongodb://localhost/medicalAI');
+mongoose.connect("mongodb+srv://Mukhammed:mukhammed123@cluster0.qhqbl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
-mongoose.connection.once('open', function() {
+mongoose.connection.once('open', () => {
     console.log("Connection has been made");
-}).on('error', function(error) {
-    console.log('Connection error: ', error);
-});
+})

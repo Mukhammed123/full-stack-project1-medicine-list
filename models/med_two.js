@@ -6,12 +6,13 @@ const sheetSchema = new Schema({
     number: String,
     name: String,
     price: Number,
+    hicode: String,
     classFirstStroke: String,
     remark: String,
     composition: String,
 });
 
 // Create Model
-const sheetTwo = mongoose.model('sheet-two', sheetSchema);
+const sheetTwo = mongoose.model('sheet-two-item', sheetSchema);
 
 module.exports = sheetTwo;

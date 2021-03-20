@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const url = 'api/posts/';
-const url2 = 'api/posts/second-sheet/';
+const url = 'api/posts';
+const url2 = 'api/posts/second-sheet';
 
 class PostService {
     //Get Posts
@@ -39,17 +39,17 @@ class PostService {
     }
     // Delete Post
     static deleteItem(id) {
-        return axios.delete(`${url}${id}`);
+        return axios.delete(`${url}/${id}`);
     }
     static deleteItem2(id) {
-        return axios.delete(`${url2}${id}`);
+        return axios.delete(`${url2}/${id}`)
     }
     // Update Post
-    static updateItem(id, data) {
-        return axios.put(`${url}update/${id}`, data);
+    static updateItem(data) {
+        return axios.post(`${url}/update`, data);
     }
-    static updateItem2(id, data) {
-        return axios.put(`${url2}update/${id}`, data);
+    static updateItem2(data) {
+        return axios.post(`${url2}/${data.id}`, data);
     }
 }
 

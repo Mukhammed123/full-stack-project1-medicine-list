@@ -55,7 +55,7 @@ async function loadPostsCollection2() {
     const client = await mongodb.MongoClient.connect("mongodb+srv://Mukhammed:mukhammed123@cluster0.qhqbl.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", {
         useNewUrlParser: true
     });
-
+    console.log("the DB is connected");
     return client.db('medicalAI').collection('sheet-twos');
 }
 

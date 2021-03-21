@@ -1,2 +1,1 @@
-web:    lein run -m myapp.web
-worker: lein run -m myapp.worker
+web:web:node index.js
